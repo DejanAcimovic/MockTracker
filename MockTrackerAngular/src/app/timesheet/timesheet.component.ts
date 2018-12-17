@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { TimeSheet } from '../timesheet';
 import { TimesheetService } from '../timesheet.service';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
+import { TaskType } from '../tasktype';
 @Component({
   selector: 'app-timesheet',
   templateUrl: './timesheet.component.html',
@@ -12,7 +13,7 @@ export class TimesheetComponent implements OnInit {
   sheets:TimeSheet[]=[];
  // displayedColumns: string[] = ['Task type', 'Duration', 'Billable', 'symbol'];
   //dataSource = new MatTableDataSource<TimeSheet>(this.sheets);
-
+tasktypes:TaskType[]=[];
   displayedColumns: string[] = ['No.','Task', 'Duration', 'Billable'];
   dataSource ;
 
@@ -36,6 +37,11 @@ export class TimesheetComponent implements OnInit {
   this.timesheetService.getTimeSheets().subscribe(sheets=>this.sheets=sheets)
 
   }
+
+  GetTaskTypes():void{
+    this.timesheetService.getTimeSheets().subscribe(sheets=>this.sheets=sheets)
+  
+    }
 
   
 }
