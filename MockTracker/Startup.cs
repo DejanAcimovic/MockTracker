@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MockTracker.Services;
 
 namespace MockTracker
 {
@@ -33,6 +34,8 @@ namespace MockTracker
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+        
+            services.AddSingleton<ITimeSheet, TimeSheetService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

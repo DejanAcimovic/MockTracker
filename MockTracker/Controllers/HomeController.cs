@@ -5,25 +5,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MockTracker.Models;
+using MockTracker.Services;
 
 namespace MockTracker.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+         private readonly ITimeSheet _service;
+
+        public HomeController(ITimeSheet service)
         {
-            return View();
+            _service = service;
+        }
+        
+        public IActionResult Tasks()
+        {
+            return Ok(_service.GetTaskTypes());
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }
