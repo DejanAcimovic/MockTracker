@@ -1,0 +1,44 @@
+<table>
+  <thead>
+    <th>Task type</th><th>Duration</th><th>Billable</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let timesheet of sheets">
+      <td >{{timesheet.Task}}</td><td>{{timesheet.Duration}}</td><td>{{timesheet.Billable}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Task">
+      <th mat-header-cell *matHeaderCellDef> Task type </th>
+      <td mat-cell *matCellDef="let sheet"> {{sheet.Task}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Duration">
+      <th mat-header-cell *matHeaderCellDef> Duration </th>
+      <td mat-cell *matCellDef="let sheet"> {{sheet.Duration}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Billable">
+      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+      <td mat-cell *matCellDef="let sheet"> {{sheet.Billable}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
