@@ -14,9 +14,7 @@ const httpOptions = {
 export class TimesheetService {
 
   private timeSheetTasksUrl = '/api/timesheet/tasks';
-  constructor(private http: HttpClient) {
-
-  }
+  constructor(private http: HttpClient) {}
 
   getTimeSheets(): Observable<TimeSheet[]> {
     return of(TIMESHEETS)
@@ -25,8 +23,4 @@ export class TimesheetService {
   getTaskType(): Observable<TaskType[]> {
     return this.http.get<TaskType[]>(this.timeSheetTasksUrl)
   }
-
-  // getTaskType(){
-  //   return this.http.get(this.timeSheetTasksUrl, httpOptions)
-  // }
 }

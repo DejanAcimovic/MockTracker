@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TimesheetComponent } from './timesheet/timesheet.component';
-//angular material modules
+//angular material modules --> TODO: Move all to one separate module and import it here
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -15,13 +15,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 //
 import { HttpClientModule } from '@angular/common/http';
-import { TimeSheetTableComponent } from './time-sheet-table/time-sheet-table.component'
+import { TimeSheetTableComponent } from './time-sheet-table/time-sheet-table.component';
+import { BoolToYesOrNoPipe } from './bool-to-yes-or-no.pipe'
 
 @NgModule({
   declarations: [
     AppComponent,
     TimesheetComponent,
-    TimeSheetTableComponent
+    TimeSheetTableComponent,
+    BoolToYesOrNoPipe
   ],
   imports: [
     BrowserModule,

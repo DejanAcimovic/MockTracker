@@ -14,21 +14,16 @@ export class TimesheetComponent implements OnInit {
 
   sheets: TimeSheet[] = [];
   tasktypes: TaskType[];
-  //dataSource;
 
   constructor(private timesheetService: TimesheetService) { }
 
   ngOnInit() {
-
     this.GetSheets();
-    //this.dataSource = this.sheets;
     this.GetTaskTypes();
-
   }
 
   GetSheets(): void {
     this.timesheetService.getTimeSheets().subscribe(sheets => this.sheets = sheets)
-
   }
 
   GetTaskTypes(): void {
@@ -38,15 +33,5 @@ export class TimesheetComponent implements OnInit {
          console.log(this.tasktypes);
     });
   }
-
-  // GetTaskTypes(): void {
-  //   this.timesheetService.getTaskType()
-  //       .subscribe((tasks: any) => {
-  //        this.tasktypes = tasks;              
-  //        console.log(this.tasktypes);
-  //   });
-  // }
   
-
-
 }

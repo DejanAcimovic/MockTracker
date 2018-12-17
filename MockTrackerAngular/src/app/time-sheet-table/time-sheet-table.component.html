@@ -21,7 +21,7 @@
   <!-- Weight Column -->
   <ng-container matColumnDef="Billable">
     <th mat-header-cell *matHeaderCellDef> Billable </th>
-    <td mat-cell *matCellDef="let element"> {{element.Billable}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.Billable | boolToYesOrNo}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
