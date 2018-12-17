@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { TimeSheet } from './timesheet';
-import { TIMESHEETS, TASKTYPES } from './mock-timesheet';
+import { TIMESHEETS } from './mock-timesheet';
 import { TaskType } from './tasktype';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,7 +13,7 @@ const httpOptions = {
 })
 export class TimesheetService {
 
-  private timeSheetTasksUrl = 'https://localhost:44394/api/timesheet/tasks';
+  private timeSheetTasksUrl = '/api/timesheet/tasks';
   constructor(private http: HttpClient) {
 
   }

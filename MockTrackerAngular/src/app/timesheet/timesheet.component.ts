@@ -1,22 +1,22 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TimeSheet } from '../timesheet';
 import { TimesheetService } from '../timesheet.service';
 import { TaskType } from '../tasktype';
+
 @Component({
   selector: 'app-timesheet',
   templateUrl: './timesheet.component.html',
   styleUrls: ['./timesheet.component.css']
 })
+
 export class TimesheetComponent implements OnInit {
 
   sheets: TimeSheet[] = [];
-  // displayedColumns: string[] = ['Task type', 'Duration', 'Billable', 'symbol'];
-  //dataSource = new MatTableDataSource<TimeSheet>(this.sheets);
   tasktypes: TaskType[] = [];
   displayedColumns: string[] = ['No.', 'Task', 'Duration', 'Billable'];
   dataSource;
 
-
+  jebemu: any[] = [];
 
 
   constructor(private timesheetService: TimesheetService) { }
@@ -36,9 +36,11 @@ export class TimesheetComponent implements OnInit {
   }
 
   GetTaskTypes(): void {
-    this.timesheetService.getTaskType().subscribe(tasks => this.tasktypes = tasks)
-    //console.log(this.tasktypes);
-
+    this.timesheetService.getTaskType()
+        .subscribe(tasks => {
+         this.tasktypes = tasks;              
+         console.log(tasks);
+    });
   }
 
 
