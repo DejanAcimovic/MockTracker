@@ -3,6 +3,7 @@ import { TimeSheet } from '../timesheet';
 import { TimesheetService } from '../timesheet.service';
 import { TaskType } from '../tasktype';
 
+
 @Component({
   selector: 'app-timesheet',
   templateUrl: './timesheet.component.html',
@@ -12,21 +13,16 @@ import { TaskType } from '../tasktype';
 export class TimesheetComponent implements OnInit {
 
   sheets: TimeSheet[] = [];
-  tasktypes: TaskType[] = [];
-  displayedColumns: string[] = ['No.', 'Task', 'Duration', 'Billable'];
-  dataSource;
-
-  jebemu: any[] = [];
-
+  tasktypes: TaskType[];
+  //dataSource;
 
   constructor(private timesheetService: TimesheetService) { }
 
   ngOnInit() {
 
     this.GetSheets();
-    this.dataSource = this.sheets;
+    //this.dataSource = this.sheets;
     this.GetTaskTypes();
-
 
   }
 
@@ -38,10 +34,19 @@ export class TimesheetComponent implements OnInit {
   GetTaskTypes(): void {
     this.timesheetService.getTaskType()
         .subscribe(tasks => {
-         this.tasktypes = tasks;              
-         console.log(tasks);
+         this.tasktypes = (tasks as TaskType[]);              
+         console.log(this.tasktypes);
     });
   }
+
+  // GetTaskTypes(): void {
+  //   this.timesheetService.getTaskType()
+  //       .subscribe((tasks: any) => {
+  //        this.tasktypes = tasks;              
+  //        console.log(this.tasktypes);
+  //   });
+  // }
+  
 
 
 }

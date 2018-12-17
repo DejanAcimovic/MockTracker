@@ -12,12 +12,14 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { TimeSheetTableComponent } from './time-sheet-table/time-sheet-table.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    TimesheetComponent
+    TimesheetComponent,
+    TimeSheetTableComponent
   ],
   imports: [
     BrowserModule,

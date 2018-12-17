@@ -25,4 +25,8 @@ export class TimesheetService {
   getTaskType(): Observable<TaskType[]> {
     return this.http.get<TaskType[]>(this.timeSheetTasksUrl)
   }
+
+  // getTaskType(){
+  //   return this.http.get(this.timeSheetTasksUrl, httpOptions)
+  // }
 }
