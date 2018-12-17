@@ -1,18 +1,15 @@
-using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MockTracker.Models
 {
     public class User
     {
-        int Id {get; set;}
-        int userID; //treba promijeniti u objekat user
+        public int UserId { get; set; }
+        public string UserName { get; set; }
 
-        int typeOfTaks; //treba promijeniti u objekat typeOfTaks
-        DateTime startTime;
-        DateTime endTime;
-
-        Boolean billable; 
 
     }
 }
