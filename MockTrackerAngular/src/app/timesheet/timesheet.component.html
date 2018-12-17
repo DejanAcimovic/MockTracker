@@ -10,7 +10,13 @@
     
   </mat-card>
 </div>
-
+<mat-card class="example-card">
+    <mat-card-header>
+        
+        <mat-card-title > Date: {{sheets[0].TimeSheetDate | date }}</mat-card-title>
+       
+      </mat-card-header>
+</mat-card>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
   <!--- Note that these columns can be defined in any order.
@@ -42,6 +48,7 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
 <mat-card class="example-card">
     <mat-card-header>
         
