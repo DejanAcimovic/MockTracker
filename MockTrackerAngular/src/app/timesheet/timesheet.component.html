@@ -1,24 +1,17 @@
-<ul>
-  <li *ngFor="let task of tasktypes">{{task.name}}</li>
-</ul>
-
-
 <div>
   <mat-card class="example-card">
     <mat-card-header>
       <pre>
-      <mat-card-title>    Name: Nermin Milisic</mat-card-title>
-      <mat-card-title>Role: Programmer</mat-card-title></pre>
+       <mat-card-title>    Name: Nermin Milisic</mat-card-title>
+       <mat-card-title>Role: Programmer</mat-card-title>
+      </pre>
     </mat-card-header>
-
-
   </mat-card>
 </div>
+
 <mat-card class="example-card">
   <mat-card-header>
-
-    <mat-card-title> Date: {{sheets[0].TimeSheetDate | date }}</mat-card-title>
-
+    <mat-card-title> Date: {{sheets[0].TimeSheetDate | date }} </mat-card-title>
   </mat-card-header>
 </mat-card>
 
@@ -28,47 +21,22 @@
 
 <mat-card class="example-card">
   <mat-card-header>
-
     <mat-card-title> Add new timesheet</mat-card-title>
-
   </mat-card-header>
+
   <form class="example-form">
     <mat-form-field class="example-full-width">
       <mat-select placeholder="Task">
-        <mat-option value="option">Option</mat-option>
-        <mat-option value="option1">Option 1</mat-option>
-        <mat-option value="option2">Option 2</mat-option>
-
+        <mat-option *ngFor="let task of tasktypes" value={{task.name}}> {{task.name}} </mat-option>
       </mat-select>
     </mat-form-field>
+
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Duration" value="1">
     </mat-form-field>
-
-
-
-
+    <!--TODO::BILLABLE OR NOT-->
+    <mat-checkbox>Billable</mat-checkbox>
+    <br><br>
     <button mat-button color="primary">Save</button>
   </form>
 </mat-card>
-<!-- <div class="example-container">
-    <mat-form-field>
-        <mat-select placeholder="Task">
-          <mat-option value="option">Option</mat-option>
-          <mat-option value="option1">Option 1</mat-option>
-          <mat-option value="option2">Option 2</mat-option>
-
-        </mat-select>
-      </mat-form-field>
-
-  <mat-form-field>
-    <mat-input matInput placeholder="Duration">
-  </mat-form-field>
-
-  <mat-form-field>
-      <mat-checkbox>Billable</mat-checkbox>
-    </mat-form-field>
- 
-
-  
-</div> -->
