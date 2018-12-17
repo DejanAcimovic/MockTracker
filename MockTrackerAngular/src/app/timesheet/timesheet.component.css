@@ -1,0 +1,28 @@
+table {
+    width: 50%;
+    margin-left: 50px;
+    margin-top:5px; 
+    text-align: left;
+  }
+.nekaKlasa{
+  margin-left: 50px;
+    margin-top:5px; 
+}
+  .example-card {
+    max-width: 400px;
+    margin: 50px;
+    display: block;
+    width: 400px;
+  }
+  .example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 50%;
+  }
+  
+
+  
+  
