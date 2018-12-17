@@ -42,7 +42,31 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+<mat-card class="example-card">
+    <mat-card-header>
+        
+         <mat-card-title> Add new task</mat-card-title>
+        
+       </mat-card-header>
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+        <mat-select placeholder="Task">
+          <mat-option value="option">Option</mat-option>
+          <mat-option value="option1">Option 1</mat-option>
+          <mat-option value="option2">Option 2</mat-option>
 
+        </mat-select>
+      </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Duration" value="1">
+    </mat-form-field>
+    
+        
+        
+      
+    <button mat-button color="primary">Save</button>
+  </form>
+</mat-card>
 <!-- <div class="example-container">
     <mat-form-field>
         <mat-select placeholder="Task">
