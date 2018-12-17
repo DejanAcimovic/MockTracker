@@ -51,7 +51,10 @@ namespace MockTracker.DB
         }
 
         public static List<TaskType> GetTaskTypes() {
-            return TipoviZadataka;
+            return new List<TaskType> {new TaskType() { TaskTypeId = 1, Name = "Programiranje", Description = "Opisasfas"},
+            new TaskType() { TaskTypeId = 2, Name = "Sastanak", Description = "Opisasfas"},
+            new TaskType() { TaskTypeId = 3, Name = "Review", Description = "Opisasfas"}
+            };
         }
         
     }

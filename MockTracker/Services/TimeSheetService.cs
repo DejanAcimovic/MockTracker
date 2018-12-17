@@ -11,8 +11,7 @@ namespace MockTracker.Services
     {
        public List<TaskType> GetTaskTypes()
         {
-            InMemoryContext.AddType(new TaskType() { TaskTypeId = 1, Name = "Programiranje", Description = "Opisasfas"});
-
+            
             return InMemoryContext.GetTaskTypes();
         }
 
