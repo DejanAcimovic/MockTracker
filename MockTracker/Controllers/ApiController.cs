@@ -27,9 +27,13 @@ namespace MockTracker.Controllers
             return Ok(_timeSheetService.GetTaskTypes());
         }
 
+        [Route("timesheet")]
+        public IActionResult Timesheets()
+        {
+            return Ok(_timeSheetService.GetDayTasksheets());
+        }
 
-        
-        
+
 
 
         [HttpPost]
