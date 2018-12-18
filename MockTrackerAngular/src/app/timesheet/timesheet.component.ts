@@ -11,6 +11,8 @@ import { TaskType } from '../tasktype';
 })
 
 export class TimesheetComponent implements OnInit {
+  displayedColumns: string[] = ['No.', 'Task', 'Duration', 'Billable'];
+  dataSource;
 
   sheets: TimeSheet[] = [];
   tasktypes: TaskType[] = [];
@@ -19,6 +21,8 @@ export class TimesheetComponent implements OnInit {
   ngOnInit() {
     this.GetSheets();
     this.GetTaskTypes();
+    this.dataSource = this.timesheetService.getTimeSheets();
+
   }
 
   GetSheets(): void {
@@ -44,6 +48,7 @@ export class TimesheetComponent implements OnInit {
 
     this.timesheetService.addTimeSheet(timesheet).subscribe(timesheet => {
       this.sheets.push(timesheet);
+      this.refresh();
     },
       (err) => {
         console.log(err)
@@ -56,6 +61,13 @@ export class TimesheetComponent implements OnInit {
     for (let i = 0; i < arr.length; i++)
       if (arr[i].name === taskName)
         return arr[i];
+  }
+
+  
+  refresh() {
+    this.timesheetService.getTimeSheets().subscribe(res => {
+      this.dataSource = res;
+    });
   }
 
 }

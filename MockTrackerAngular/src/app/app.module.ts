@@ -15,14 +15,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 //
 import { HttpClientModule } from '@angular/common/http';
-import { TimeSheetTableComponent } from './time-sheet-table/time-sheet-table.component';
 import { BoolToYesOrNoPipe } from './bool-to-yes-or-no.pipe'
 
 @NgModule({
   declarations: [
     AppComponent,
     TimesheetComponent,
-    TimeSheetTableComponent,
     BoolToYesOrNoPipe
   ],
   imports: [
