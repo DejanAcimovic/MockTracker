@@ -13,21 +13,21 @@ namespace MockTracker.Controllers
     public class ApiController : Controller
     {
         private readonly ITimeSheet _timeSheetService;
-        
+
 
         public ApiController(ITimeSheet service)
         {
             _timeSheetService = service;
-            
+
         }
-        
+
         [Route("timesheet/tasks")]
         public IActionResult Tasks()
         {
             return Ok(_timeSheetService.GetTaskTypes());
         }
 
-        
+
         [Route("timesheet")]
         public IActionResult Timesheets()
         {
@@ -36,9 +36,20 @@ namespace MockTracker.Controllers
 
         [HttpPost]
         [Route("timesheet")]
-        public IActionResult PutTimesheet(){
+        public IActionResult PutTimesheet() {
 
             return Ok();
+        }
+
+
+        [HttpPost]
+        [Route("timesheet")]
+        public bool PostTodoItem([FromBody]DayTasksheet sheet)
+        {
+
+            _timeSheetService.addTimesheet(sheet);
+            
+            return true;
         }
     }
 }

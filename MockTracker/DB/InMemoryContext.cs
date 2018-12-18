@@ -48,19 +48,12 @@ namespace MockTracker.DB
 
         public static List<DayTasksheet> GetSheets()
         {
-            if (Sheets == null)
-            {
-                Sheets = new List<DayTasksheet>();
-                Sheets.Add(new DayTasksheet() { TaskSheetId = 1, Task = null, Billable = true, Date = DateTime.Now, Duration = 3 });
-            }
+            
             return Sheets;
         }
 
         public static List<TaskType> GetTaskTypes() {
-            return new List<TaskType> {new TaskType() { TaskTypeId = 1, Name = "Programiranje", Description = "Opisasfas"},
-            new TaskType() { TaskTypeId = 2, Name = "Sastanak", Description = "Opisasfas"},
-            new TaskType() { TaskTypeId = 3, Name = "Review", Description = "Opisasfas"}
-            };
+            return TipoviZadataka;
         }
 
         public static User GetCurrentUser()

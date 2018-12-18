@@ -17,5 +17,11 @@ namespace MockTracker.Services
         public List<TaskType> GetTaskTypes() {
            return InMemoryContext.GetTaskTypes();
         }
+
+        public bool addTimesheet(DayTasksheet sheet)
+        {
+            InMemoryContext.AddSheet(sheet);
+            return true;
+        }
     }
 }

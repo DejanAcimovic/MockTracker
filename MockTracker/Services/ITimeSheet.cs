@@ -9,6 +9,7 @@ namespace MockTracker.Services
     public interface ITimeSheet
     {
         List<DayTasksheet> GetDayTasksheets();
-        List<TaskType> GetTaskTypes();       
+        List<TaskType> GetTaskTypes();
+        bool addTimesheet(DayTasksheet sheet);
     }
 }
