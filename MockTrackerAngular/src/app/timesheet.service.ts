@@ -13,7 +13,6 @@ const httpOptions = {
 export class TimesheetService {
 
   private timeSheetTasksUrl = '/api/timesheet/tasks';
-  private postTimeSheetUrl='api/timesheet';
   constructor(private http: HttpClient) {}
 
   getTimeSheets(): Observable<TimeSheet[]> {
@@ -25,7 +24,8 @@ export class TimesheetService {
   }
 
   addTimeSheet(timesheet: TimeSheet): Observable<TimeSheet> {
-    return this.http.post<TimeSheet>('api/timesheet', timesheet, httpOptions);
+    //console.log(JSON.stringify(timesheet));
+    return this.http.post<TimeSheet>('/api/timesheet', JSON.stringify(timesheet), httpOptions);
     
   }
 }

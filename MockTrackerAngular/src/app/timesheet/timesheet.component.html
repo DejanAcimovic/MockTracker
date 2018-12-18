@@ -1,47 +1,44 @@
-<div class="container">
-  <div>
-    <mat-card class="example-card">
-      <mat-card-header>
-        <pre>
+<div>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <pre>
        <mat-card-title>    Name: Nermin Milisic</mat-card-title>
        <mat-card-title>Role: Programmer</mat-card-title>
       </pre>
-      </mat-card-header>
-    </mat-card>
-  </div>
-
-  <div *ngIf="sheets[0] !== undefined">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <mat-card-title> Date: {{sheets[0].date | date }} </mat-card-title>
-      </mat-card-header>
-    </mat-card>
-
-    <!-- TABLE -->
-    <app-time-sheet-table [dataSource]="sheets"></app-time-sheet-table>
-  </div>
-
-  <mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title> Add new timesheet</mat-card-title>
     </mat-card-header>
-
-    <!--Add forma-->
-    <form class="example-form">
-      <mat-form-field class="example-full-width">
-        <mat-select placeholder="Task" #tsk>
-          <mat-option *ngFor="let task of tasktypes" value={{task.name}}> {{task.name}} </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Duration" value="1" #duration>
-      </mat-form-field>
-      <mat-checkbox #billable>Billable</mat-checkbox>
-      <br><br>
-      <button mat-button color="primary" type="button" (click)="AddTimeSheet(tsk.value,duration.value,billable.value)">Save</button>
-    </form>
-
-    
   </mat-card>
 </div>
+
+<div *ngIf="sheets[0] !== undefined">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title> Date: {{sheets[0].date | date }} </mat-card-title>
+    </mat-card-header>
+  </mat-card>
+
+  <!-- TABLE -->
+  <app-time-sheet-table [dataSource]="sheets"></app-time-sheet-table>
+</div>
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title> Add new timesheet</mat-card-title>
+  </mat-card-header>
+
+  <!--Add forma-->
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Task" #taskF>
+        <mat-option *ngFor="let task of tasktypes" value={{task.Name}}> {{task.Name}} </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Duration" value="1" #duration>
+    </mat-form-field>
+    <mat-checkbox #billable>Billable</mat-checkbox>
+    <br><br>
+    <button mat-button color="primary" type="button" (click)="AddTimeSheet(taskF.value, duration.value, billable.checked)">Save</button>
+  </form>
+
+</mat-card>

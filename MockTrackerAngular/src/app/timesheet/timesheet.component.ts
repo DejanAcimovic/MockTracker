@@ -14,7 +14,6 @@ export class TimesheetComponent implements OnInit {
 
   sheets: TimeSheet[] = [];
   tasktypes: TaskType[] = [];
-  newTimeSheet: TimeSheet;
   constructor(private timesheetService: TimesheetService) { }
 
   ngOnInit() {
@@ -27,34 +26,36 @@ export class TimesheetComponent implements OnInit {
       for (let i = 0; i < sheets.length; i++) {
         this.sheets.push(new TimeSheet(sheets[i].taskSheetId, sheets[i].task, sheets[i].duration, sheets[i].billable, sheets[i].date))
       }
-      // console.log(this.sheets);
     });
   }
 
   GetTaskTypes(): void {
     this.timesheetService.getTaskType()
       .subscribe(tasks => {
-        this.tasktypes = (tasks as TaskType[]);
-        // console.log(this.tasktypes);
+        for (let i = 0; i < tasks.length; i++)
+          this.tasktypes.push(new TaskType(tasks[i].taskTypeId, tasks[i].name, tasks[i].description));
       });
   }
 
 
   AddTimeSheet(taskName, duration, billable): void {
-    console.log(duration);
-    //find task
-    let newTask;
-    for (let taskT of this.tasktypes)
-      if (taskT.Name === taskName)
-        newTask = new TaskType(taskT);
+    let temp = this.FindTaskByName(taskName)
+    let timesheet = new TimeSheet(this.sheets.length, temp, duration, billable, new Date('12/18/2018'));
 
-    let timesheet = new TimeSheet(this.sheets.length, newTask, duration, billable, new Date('12/18/2018'));
-     console.log(newTask);
-    // timesheet.date = new Date('12/18/2018');
     this.timesheetService.addTimeSheet(timesheet).subscribe(timesheet => {
       this.sheets.push(timesheet);
-      // console.log(timesheet);
-    });
+    },
+      (err) => {
+        console.log(err)
+      }
+    );
+  }
+
+  FindTaskByName(taskName: string): TaskType {
+    let arr = this.tasktypes;
+    for (let i = 0; i < arr.length; i++)
+      if (arr[i].Name === taskName)
+        return arr[i];
   }
 
 }

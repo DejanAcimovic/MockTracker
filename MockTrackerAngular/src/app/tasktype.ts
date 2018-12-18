@@ -3,10 +3,10 @@ export class TaskType {
     public Name: string;
     public Description: string;
 
-    constructor(newTasktype: TaskType)
+    constructor(id:number, name:string, desc:string)
     {
-        this.TaskTypeID = newTasktype.TaskTypeID;
-        this.Name = newTasktype.Name;
-        this.Description = newTasktype.Description;
+        this.TaskTypeID = id;
+        this.Name = name;
+        this.Description = desc;
     }
 }

@@ -7,12 +7,11 @@ export class TimeSheet {
     public billable: boolean;
     public date: Date;
 
-    constructor(taskSheetId,task,duration,billable,date){
-     this.taskSheetId=taskSheetId;
-     this.task=task;
-     this.duration=duration;
-     this.billable=billable;
-     this.date=date;
-
+    constructor(taskSheetId, task, duration, billable, date) {
+        this.taskSheetId = taskSheetId;
+        this.task = task;
+        this.duration = duration;
+        this.billable = billable;
+        this.date = date;
     }
 }
