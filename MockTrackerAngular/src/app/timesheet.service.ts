@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { TimeSheet } from './timesheet';
-import { TIMESHEETS } from './mock-timesheet';
 import { TaskType } from './tasktype';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -26,7 +25,7 @@ export class TimesheetService {
   }
 
   addTimeSheet(timesheet: TimeSheet): Observable<TimeSheet> {
-    return this.http.post<TimeSheet>('api/timesheet',timesheet,httpOptions);
+    return this.http.post<TimeSheet>('api/timesheet', timesheet, httpOptions);
     
   }
 }
