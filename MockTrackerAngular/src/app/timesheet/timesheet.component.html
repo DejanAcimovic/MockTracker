@@ -11,11 +11,11 @@
 
 <mat-card class="example-card">
   <mat-card-header>
-    <mat-card-title> Date: {{sheets[0].TimeSheetDate | date }} </mat-card-title>
+   <mat-card-title> Date: {{sheets[0].date | date }} </mat-card-title>
   </mat-card-header>
 </mat-card>
 
-<!--TABLE!!-->
+
 <app-time-sheet-table [dataSource]="sheets"></app-time-sheet-table>
 
 
@@ -23,20 +23,20 @@
   <mat-card-header>
     <mat-card-title> Add new timesheet</mat-card-title>
   </mat-card-header>
-
+<!--Add forma-->
   <form class="example-form">
     <mat-form-field class="example-full-width">
       <mat-select placeholder="Task">
-        <mat-option *ngFor="let task of tasktypes" value={{task.name}}> {{task.name}} </mat-option>
+        <mat-option *ngFor="let task of tasktypes" value={{task}}> {{task.name}} </mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Duration" value="1">
+      <input matInput placeholder="Duration" value="1" #duration>
     </mat-form-field>
     <!--TODO::BILLABLE OR NOT-->
-    <mat-checkbox>Billable</mat-checkbox>
+    <mat-checkbox #billable>Billable</mat-checkbox>
     <br><br>
-    <button mat-button color="primary">Save</button>
+    <button mat-button color="primary" (click)="AddTimeSheet(1,task.value,duration.value,billable.value)">Save</button>
   </form>
 </mat-card>

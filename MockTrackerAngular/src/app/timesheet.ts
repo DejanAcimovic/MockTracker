@@ -1,10 +1,18 @@
 import { TaskType } from './tasktype'
 
 export class TimeSheet {
-    TimesheetID: number;
-    Task: TaskType;
-    Duration: number;
-    Billable: boolean;
-    TimeSheetDate: Date;
+    taskSheetId: number;
+    task: TaskType;
+    duration: number;
+    billable: boolean;
+    date: Date;
 
+    constructor(taskSheetId,task,duration,billable,date){
+     this.taskSheetId=taskSheetId;
+     this.task=task;
+     this.duration=duration;
+     this.billable=billable;
+     this.date=date;
+
+    }
 }
