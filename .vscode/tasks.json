@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/MockTracker.csproj"
+                "${workspaceFolder}/MockTracker/MockTracker.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

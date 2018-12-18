@@ -2,7 +2,7 @@ import { TaskType } from './tasktype'
 
 export class TimeSheet {
     TimesheetID: number;
-    Task: string;
+    Task: TaskType;
     Duration: number;
     Billable: boolean;
     TimeSheetDate: Date;

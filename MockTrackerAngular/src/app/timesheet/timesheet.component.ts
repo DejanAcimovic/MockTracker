@@ -1,35 +1,37 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TimeSheet } from '../timesheet';
 import { TimesheetService } from '../timesheet.service';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import { TaskType } from '../tasktype';
+
+
 @Component({
   selector: 'app-timesheet',
   templateUrl: './timesheet.component.html',
   styleUrls: ['./timesheet.component.css']
 })
+
 export class TimesheetComponent implements OnInit {
 
-  sheets:TimeSheet[]=[];
-  displayedColumns: string[] = ['Task type', 'Duration', 'Billable', 'symbol'];
-  dataSource = new MatTableDataSource<TimeSheet>(this.sheets);
+  sheets: TimeSheet[] = [];
+  tasktypes: TaskType[];
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-
-  constructor(private timesheetService:TimesheetService) 
-  {
-
-
-   }
+  constructor(private timesheetService: TimesheetService) { }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-     this.GetSheets();
-     
+    this.GetSheets();
+    this.GetTaskTypes();
   }
 
-  GetSheets():void{
-  this.timesheetService.getTimeSheets().subscribe(sheets=>this.sheets=sheets)
-
+  GetSheets(): void {
+    this.timesheetService.getTimeSheets().subscribe(sheets => this.sheets = sheets)
   }
+
+  GetTaskTypes(): void {
+    this.timesheetService.getTaskType()
+        .subscribe(tasks => {
+         this.tasktypes = (tasks as TaskType[]);              
+         console.log(this.tasktypes);
+    });
+  }
+  
 }
