@@ -6,8 +6,9 @@ using MockTracker.Models;
 
 namespace MockTracker.Services
 {
-    public  interface ITimeSheet
+    public interface ITimeSheet
     {
-        List<TaskType> GetTaskTypes();
+        List<DayTasksheet> GetDayTasksheets();
+        List<TaskType> GetTaskTypes();       
     }
 }

@@ -10,6 +10,7 @@ namespace MockTracker.DB
     {
         static List<DayTasksheet> Sheets = null;
         static List<TaskType> TipoviZadataka = null;
+        
 
         public static void AddSheet(DayTasksheet sheet) {
             if (Sheets == null)
@@ -47,6 +48,11 @@ namespace MockTracker.DB
 
         public static List<DayTasksheet> GetSheets()
         {
+            if (Sheets == null)
+            {
+                Sheets = new List<DayTasksheet>();
+                Sheets.Add(new DayTasksheet() { TaskSheetId = 1, Task = null, Billable = true, Date = DateTime.Now, Duration = 3 });
+            }
             return Sheets;
         }
 
@@ -55,6 +61,11 @@ namespace MockTracker.DB
             new TaskType() { TaskTypeId = 2, Name = "Sastanak", Description = "Opisasfas"},
             new TaskType() { TaskTypeId = 3, Name = "Review", Description = "Opisasfas"}
             };
+        }
+
+        public static User GetCurrentUser()
+        {
+            return new User { UserId = 1, UserName = "Korisnik Korisnikovic" };
         }
         
     }

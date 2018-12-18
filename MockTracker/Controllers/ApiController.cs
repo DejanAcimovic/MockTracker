@@ -12,24 +12,26 @@ namespace MockTracker.Controllers
     [Route("[controller]")]
     public class ApiController : Controller
     {
-        private readonly ITimeSheet _service;
+        private readonly ITimeSheet _timeSheetService;
+        
 
         public ApiController(ITimeSheet service)
         {
-            _service = service;
+            _timeSheetService = service;
+            
         }
         
         [Route("timesheet/tasks")]
         public IActionResult Tasks()
         {
-            return Ok(_service.GetTaskTypes());
+            return Ok(_timeSheetService.GetTaskTypes());
         }
 
-        [HttpGet]
+        
         [Route("timesheet")]
         public IActionResult Timesheets()
         {
-            return Ok(_service.GetTaskTypes());
+            return Ok(_timeSheetService.GetDayTasksheets());
         }
 
         [HttpPost]

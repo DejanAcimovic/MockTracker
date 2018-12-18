@@ -7,13 +7,15 @@ using MockTracker.DB;
 
 namespace MockTracker.Services
 {
-    public class TimeSheetService:ITimeSheet
+    public class TimeSheetService: ITimeSheet
     {
-       public List<TaskType> GetTaskTypes()
-        {
-            
-            return InMemoryContext.GetTaskTypes();
+        public List<DayTasksheet> GetDayTasksheets() {
+            return InMemoryContext.GetSheets();
+
         }
 
+        public List<TaskType> GetTaskTypes() {
+           return InMemoryContext.GetTaskTypes();
+        }
     }
 }
