@@ -54,7 +54,7 @@ export class TimesheetComponent implements OnInit {
   FindTaskByName(taskName: string): TaskType {
     let arr = this.tasktypes;
     for (let i = 0; i < arr.length; i++)
-      if (arr[i].Name === taskName)
+      if (arr[i].name === taskName)
         return arr[i];
   }
 
