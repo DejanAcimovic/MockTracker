@@ -44,12 +44,12 @@ namespace MockTracker.Controllers
 
         [HttpPost]
         [Route("timesheet")]
-        public bool PostTodoItem([FromBody]DayTasksheet sheet)
+        public IActionResult PostTodoItem([FromBody]DayTasksheet sheet)
         {
 
             _timeSheetService.addTimesheet(sheet);
             
-            return true;
+            return Ok();
         }
     }
 }
