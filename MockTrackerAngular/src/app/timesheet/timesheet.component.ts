@@ -3,7 +3,6 @@ import { TimeSheet } from '../timesheet';
 import { TimesheetService } from '../timesheet.service';
 import { TaskType } from '../tasktype';
 
-
 @Component({
   selector: 'app-timesheet',
   templateUrl: './timesheet.component.html',
@@ -12,7 +11,7 @@ import { TaskType } from '../tasktype';
 
 export class TimesheetComponent implements OnInit {
   displayedColumns: string[] = ['No.', 'Task', 'Duration', 'Billable'];
-  dataSource;
+  dataSource: any;
 
   sheets: TimeSheet[] = [];
   tasktypes: TaskType[] = [];
@@ -22,22 +21,18 @@ export class TimesheetComponent implements OnInit {
     this.GetSheets();
     this.GetTaskTypes();
     this.dataSource = this.timesheetService.getTimeSheets();
-
   }
 
   GetSheets(): void {
     this.timesheetService.getTimeSheets().subscribe(sheets => {
-      for (let i = 0; i < sheets.length; i++) {
-        this.sheets.push(new TimeSheet(sheets[i].taskSheetId, sheets[i].task, sheets[i].duration, sheets[i].billable, sheets[i].date))
-      }
+        this.sheets = sheets;
     });
   }
 
   GetTaskTypes(): void {
     this.timesheetService.getTaskType()
       .subscribe(tasks => {
-        for (let i = 0; i < tasks.length; i++)
-          this.tasktypes.push(new TaskType(tasks[i].taskTypeId, tasks[i].name, tasks[i].description));
+        this.tasktypes = tasks;
       });
   }
 
@@ -48,7 +43,10 @@ export class TimesheetComponent implements OnInit {
 
     this.timesheetService.addTimeSheet(timesheet).subscribe(timesheet => {
       this.sheets.push(timesheet);
-      this.refresh();
+      //refresh table datasource
+      this.dataSource.subscribe(newSheet => {
+        this.dataSource = newSheet;
+      });
     },
       (err) => {
         console.log(err)
@@ -61,13 +59,6 @@ export class TimesheetComponent implements OnInit {
     for (let i = 0; i < arr.length; i++)
       if (arr[i].name === taskName)
         return arr[i];
-  }
-
-  
-  refresh() {
-    this.timesheetService.getTimeSheets().subscribe(res => {
-      this.dataSource = res;
-    });
   }
 
 }

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TimesheetComponent } from './timesheet/timesheet.component';
-//angular material modules --> TODO: Move all to one separate module and import it here
+//angular material modules 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';

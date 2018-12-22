@@ -34,10 +34,10 @@ namespace MockTracker
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-        
+            services.AddCors();
             services.AddSingleton<ITimeSheet, TimeSheetService>();
             services.AddSingleton<IUser, UserService>();
-           
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +54,9 @@ namespace MockTracker
                 app.UseHsts();
             }
 
+            app.UseCors(builder =>
+                builder.WithOrigins("http://localhost.com:4200")
+                        .AllowAnyHeader());
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

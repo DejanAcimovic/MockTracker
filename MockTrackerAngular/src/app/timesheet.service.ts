@@ -24,8 +24,7 @@ export class TimesheetService {
   }
 
   addTimeSheet(timesheet: TimeSheet): Observable<TimeSheet> {
-    //console.log(JSON.stringify(timesheet));
-    return this.http.post<TimeSheet>('/api/timesheet', JSON.stringify(timesheet), httpOptions);
-    
+    return this.http.post<TimeSheet>('/api/timesheet', timesheet, httpOptions);
   }
+  
 }
